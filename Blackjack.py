@@ -13,14 +13,14 @@ def PlayAgain():
     
     #Use a conditioned while loop to check if the user wants to play again.
     while restart == False:
-        again = stringInput("Would you like to play again?")
+        again = stringInput("\nWould you like to play again?")
         again = again.lower()
         if again == "yes" or again == 'y':
             return True
         elif again == "no" or again == 'n':
             return False
         else:
-            print("Please enter yes or no.")
+            print("\nPlease enter yes or no.")
         #end if
     #end while
 #end def
@@ -46,7 +46,7 @@ def Choice():
             Card = (NewCard())
             playerDeck.append(Card)
             PTotal = Calculate(playerDeck, PTotal)
-            print(f"The value of your cards is {PTotal} and your cards are {', '.join(playerDeck)}.")
+            print(f"\nThe value of your cards is {PTotal} and your cards are {', '.join(playerDeck)}.")
             Check = ValueCheck()
             if Check == True:
                 run = True
@@ -54,7 +54,7 @@ def Choice():
         elif choice == "stand":
             run = True
         else:
-            print("Please pick hit or stand.")
+            print("\nPlease pick hit or stand.")
         #end if
     #end while
 #end def
@@ -106,35 +106,35 @@ def ValueCheck():
     global PTotal, DTotal, PScore, HScore, Bust
     
     if PTotal == 21 and DTotal == 21:
-        print("You have both gone bust.\nThis game is a draw.")
+        print("\nYou have both gone bust.\nThis game is a draw.")
         HScore += 1
         PScore += 1
         Bust = True
         return True
             
     elif PTotal > 21:
-        print("You have gone bust.\nHouse Wins")
+        print("\nYou have gone bust.\nHouse Wins")
         HScore += 1
         DisplayScores()
         Bust = True
         return True
         
     elif DTotal > 21:
-        print("Dealer has gone bust.\nYou Win.")
+        print("\nDealer has gone bust.\nYou Win.")
         PScore += 1
         DisplayScores()
         Bust = True
         return True
     
     elif DTotal == 21:
-        print("The dealer has won with blackjack.")
+        print("\nThe dealer has won with blackjack.")
         HScore += 1
         DisplayScores()
         Bust = True
         return True
     
     elif PTotal == 21:
-        print("You have won with blackjack.")
+        print("\nYou have won with blackjack.")
         PScore += 1
         DisplayScores()
         Bust = True
@@ -152,25 +152,25 @@ def TotalCheck():
     
     while check != True:
         if PTotal > DTotal:
-            print("You Win.")
+            print("\nYou Win.")
             PScore += 1
             DisplayScores()
             check = True
             
         elif PTotal < DTotal:
-            print("House Wins.")
+            print("\nHouse Wins.")
             HScore += 1
             DisplayScores()
             check = True
         
         elif PTotal == DTotal:
-            print("The game is a draw.")
+            print("\nThe game is a draw.")
             HScore += 1
             PScore += 1
             check = True
             
         else:
-            print("An error has occured.")
+            print("\nAn error has occured.")
         #end if
     #end while
 #end def
@@ -195,19 +195,19 @@ def DelearChoice():
 #end def
 
 #Made a function to correctly display game or games depeding on the score of the player and computer (House/Delear)
-def DisplayScores ():
+def DisplayScores():
     global PScore, HScore
     if PScore > 1:
         if HScore > 1:
-            print(f"Game has eneded you won {PScore} games.\nThe computer won {HScore} games.")
+            print(f"\nGame has ended you have won {PScore} games.\nThe computer has won {HScore} games.")
         elif HScore <= 1:
-            print(f"Game has eneded you won {PScore} games.\nThe computer won {HScore} game.")
+            print(f"\nGame has ended you have won {PScore} games.\nThe computer has won {HScore} game.")
         #end if
     elif HScore > 1:
         if PScore > 1:
-            print(f"Game has eneded you won {PScore} game.\nThe computer won {HScore} games.")
+            print(f"\nGame has ended you have won {PScore} game.\nThe computer has won {HScore} games.")
         elif PScore <= 1:
-            print(f"Game has eneded you won {PScore} games.\nThe computer won {HScore} game.")
+            print(f"\nGame has ended you have won {PScore} games.\nThe computer has won {HScore} game.")
         #end if
     #end if
 #end def
@@ -220,7 +220,7 @@ def stringInput(reason):
         Input = input(f'{reason}: ')
         
         if Input == '':
-            print("Please do not leave the input blank.")
+            print("\nPlease do not leave the input blank.")
         else:
             return Input
         #end if
@@ -281,7 +281,7 @@ HScore = 0
 Run = True
 
 #Explain the game.
-print("This is a game of Blackjack.\nYou are the player and the computer is the delear and house.")
+print("\nThis is a game of Blackjack.\nYou are the player and the computer is the delear and house.")
 
 while Run == True:
     #A varibale to help with if statments below
@@ -320,9 +320,9 @@ while Run == True:
             elif choice == True:
                 continue
             else:
-                print("An error has occured.")
+                print("\nAn error has occured.")
     else:
-            print("An error has occured.")
+            print("\nAn error has occured.")
     #end if
 #end while
 
