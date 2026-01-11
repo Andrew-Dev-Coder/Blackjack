@@ -1,0 +1,36 @@
+Games - Blackjack
+
+Blackjack:
+-Randomly pick cards for player and computer(dealer)
+-Check if cards equal 21
+-See if the user wants to stand or hit via input - validation
+-Perform process requested
+-Once the user stands:
+-Show dealers hand
+-Check if dealers hand is 12 - draw a card
+-Check if dealers hand is 17 - stand
+-Once done compare hands to see which is higher
+
+Functions (created):
+-PlayAgain - Asks the user if they want to play again
+-NewCard - Randomly picks a new card
+-Choice - Asks the user if they want to hit or stand
+-CreateHand - Randonly picks two cards to use and puts them into a deck
+-Calculate - Calulates the value of the deck that is put in
+-ValueCheck - Checks if the hand has gone above 21
+-TotalCheck - Cheks for the winner
+-DelearChoice - detemines if the computer "hits" or "stands"
+-DisplayScores - Outputs the total number of games the player and computer have won
+
+Order of Functions:
+CreateHand -Player
+CreateHand -Computer/Dealer
+Calculate -Player
+Calculate -Computer/Dealer
+ValueCheck -Does both
+Choice -Player
+    NewCard,Calculate and ValueCheck -If player chose to "hit"
+DelearChoice -Computer/Dealer
+    NewCard,Calculate and ValueCheck -If hit
+TotalCheck -Both
+PlayAgain
