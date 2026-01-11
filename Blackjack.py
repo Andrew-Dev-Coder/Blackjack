@@ -6,7 +6,7 @@ The user is referred to as the "player".
 
 from random import choice as ch #Random is used for picking the cards of the player and dealer.
 
-#Make functions
+#Define functions
 #Asks the user if they want to play again
 def PlayAgain():
     restart = False
@@ -203,11 +203,11 @@ def DisplayScores():
         elif HScore <= 1:
             print(f"\nGame has ended you have won {PScore} games.\nThe computer has won {HScore} game.")
         #end if
-    elif HScore > 1:
-        if PScore > 1:
+    elif PScore <= 1:
+        if HScore <= 1:
+            print(f"\nGame has ended you have won {PScore} game.\nThe computer has won {HScore} game.")
+        elif HScore > 1:
             print(f"\nGame has ended you have won {PScore} game.\nThe computer has won {HScore} games.")
-        elif PScore <= 1:
-            print(f"\nGame has ended you have won {PScore} games.\nThe computer has won {HScore} game.")
         #end if
     #end if
 #end def
