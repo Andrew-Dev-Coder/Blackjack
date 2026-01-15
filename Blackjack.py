@@ -92,7 +92,7 @@ def Calculate(hand, total):
 
     #Use a while loop to make an ace worth one if the total value has gone over 21
     for i in aces:
-        while total > 21:
+        while total > 21 and len(aces) > 1:
             for card in aces:
                 total -= 10
                 aces.pop()
@@ -167,6 +167,7 @@ def TotalCheck():
             print("\nThe game is a draw.")
             HScore += 1
             PScore += 1
+            DisplayScores()
             check = True
             
         else:
@@ -183,7 +184,6 @@ def DelearChoice():
     while run == True:
         if DTotal >= 17:
             return DTotal, dealerHand
-            run = False
         elif DTotal <= 16:
             Card = (NewCard())
             dealerHand.append(Card)
@@ -197,17 +197,17 @@ def DelearChoice():
 #Made a function to correctly display game or games depeding on the score of the player and computer (House/Delear)
 def DisplayScores():
     global PScore, HScore
-    if PScore > 1:
-        if HScore > 1:
-            print(f"\nGame has ended you have won {PScore} games.\nThe computer has won {HScore} games.")
-        elif HScore <= 1:
-            print(f"\nGame has ended you have won {PScore} games.\nThe computer has won {HScore} game.")
+    if PScore > 1 or PScore == 0:
+        if HScore > 1 or HScore == 0:
+            print(f"\nThe game has ended.\nYou have won {PScore} games.\nThe computer has won {HScore} games.")
+        elif HScore == 1:
+            print(f"\nThe game has ended.\nYou have won {PScore} games.\nThe computer has won {HScore} game.")
         #end if
-    elif PScore <= 1:
-        if HScore <= 1:
-            print(f"\nGame has ended you have won {PScore} game.\nThe computer has won {HScore} game.")
-        elif HScore > 1:
-            print(f"\nGame has ended you have won {PScore} game.\nThe computer has won {HScore} games.")
+    elif PScore < 1:
+        if HScore < 1:
+            print(f"\nThe game has ended.\nYou have won {PScore} game.\nThe computer has won {HScore} game.")
+        elif HScore > 1 or HScore == 0:
+            print(f"\nThe game has ended.\nYou have won {PScore} game.\nThe computer has won {HScore} games.")
         #end if
     #end if
 #end def
@@ -304,25 +304,24 @@ while Run == True:
     
     #Show the cards
     print(f"\nOne of the dealers cards is {dealerHand[0]}.\nThe value of your cards is {PTotal} and your cards are {' and '.join(playerDeck)}.")
-    
-    check = ValueCheck()
 
-    if check == False and gameRun == True:
-            Choice()
-            if Bust == False:
-                DelearChoice()
-                TotalCheck()
-            gameRun = False
-    if check == True or gameRun == False:
-            choice = PlayAgain()
-            if choice == False:
-                Run = False
-            elif choice == True:
-                continue
-            else:
-                print("\nAn error has occured.")
-    else:
+    if ValueCheck() == False and gameRun == True:
+        Choice()
+        if Bust == False:
+            DelearChoice()
+        if Bust == False:
+            TotalCheck()
+        gameRun = False
+    if Bust == True or gameRun == False:
+        choice = PlayAgain()
+        if choice == False:
+            Run = False
+        elif choice == True:
+            continue
+        else:
             print("\nAn error has occured.")
+    else:
+        print("\nAn error has occured.")
     #end if
 #end while
 
